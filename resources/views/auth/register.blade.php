@@ -1,59 +1,35 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('register') }}">
+<x-app-layout>
+<section class="flex justify-center items-center w-[80%] mx-auto mt-10">
+    <div class="w-[80%] mx-auto bg-my-light-blue rounded pb-10 space-y-4 border border-gray-100">
+               <form method="POST" action="{{ route('register') }}" novalidate enctype="multipart/form-data">
             @csrf
+        <div class="mb-4">
+            <h2 class="text-xl font-bold text-white bg-my-blue p-2">新規登録</h2>
+        </div>
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+        <div class="w-[80%] mx-auto mt-10">
+        <div class="mb-2">
+            <input class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600" type="text" name="name" placeholder="ユーザー名" value="{{ old('name') }}">
+        </div>
+        <div class="mb-2">
+            <input class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600" type="email" name="email" placeholder="メールアドレス" value="{{ old('email') }}">
+        </div>
+        <div class="mb-2">
+            <input class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600" type="password" name="password" placeholder="パスワード">
+        </div>
+        <div class="mb-2">
+            <input class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600" type="password" name="password_confirmation" placeholder="パスワード(確認)">
+        </div>
+        <div class="mb-4">
+            <label for="image">プロフィール画像</label>
+            <input class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600" id="image" type="file" name="image">
+        </div>
+        <div>
+            <button class="w-full py-4 bg-my-gray rounded text-sm font-bold transition duration-200">新規登録</button>
+        </div>
+               </form>
+    </div>
+    </div>
+</section>
+</x-app-layout>
