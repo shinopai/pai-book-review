@@ -2,12 +2,12 @@
       class="flex flex-wrap justify-between items-center w-screen text-white bg-[#4763C2] md:flex-nowrap p-5"
     >
       <!-- Title -->
-      <div class="z-30 flex items-center h-full pl-3 space-x-3">
+      <div class="flex items-center h-full pl-3 space-x-3">
         <a href="{{ url('/') }}"><p class="text-2xl">ブックレビュー投稿</p></a>
       </div>
       <!-- MenuButton -->
       <button
-        class="z-30 flex items-center justify-end flex-grow pr-3 focus:outline-none md:hidden"
+        class="flex items-center justify-end flex-grow pr-3 focus:outline-none md:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,9 @@
           >ログイン</a
         >
         @else
-        <i class="fa-solid fa-user" style="margin-bottom: 3px;"></i>{{ Auth::user()->name }}
+        <div>
+          <i class="fa-solid fa-user" style="margin-bottom: 3px; margin-right: 3px;"></i>{{ Auth::user()->name }}
+        </div>
         @if(Auth::user()->admin == 1)
         <a href="{{ route('books.create') }}">ブック登録</a>
         @endif

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         // $this->call(GenreTableSeeder::class);
         // $this->call(PublisherTableSeeder::class);
-        $this->call(UserTableSeeder::class);
+        // $this->call(UserTableSeeder::class);
+        $this->call(BookTableSeeder::class);
     }
 }

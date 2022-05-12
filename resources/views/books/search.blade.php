@@ -14,7 +14,7 @@
       @endif
     </h1>
     <ul class="mt-5">
-      @forelse ($books as $book)
+      @foreach ($books as $book)
           <li class="mb-2">
         <div class="flex justify-center w-[95%] mx-auto">
           <div class="w-[30%] flex text-white">
@@ -50,9 +50,7 @@
           </div>
         </div>
       </li>
-      @empty
-          <li>レビューはまだありません</li>
-      @endforelse
+      @endforeach
     </ul>
   </div>
 

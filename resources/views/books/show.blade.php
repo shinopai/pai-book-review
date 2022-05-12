@@ -50,7 +50,7 @@
           <div class="w-[15%] bg-my-blue rounded-lg flex justify-center items-center">
             <span class="text-white font-bold text-2xl">{{ $review->score }}</span>
           </div>
-          <div class="w-[85%] p-2 rounded-lg border border-black bg-white hover:bg-my-light-blue">
+          <div class="w-[85%] p-2 rounded-lg border border-black bg-white hover:bg-my-light-blue cursor-pointer">
             <p class="text-lg">{{ $book->title }}</p>
             <p>{{ $review->title }}</p>
             <p class="text-right">

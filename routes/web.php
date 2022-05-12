@@ -12,9 +12,10 @@ Route::resource('books', BookController::class, ['only' => ['create', 'store', '
 Route::get('/search', [BookController::class, 'search'])->name('books.search');
 
 /* review */
-Route::resource('books.reviews', ReviewController::class, ['only' => ['create']]);
-Route::resource('books.users.reviews', ReviewController::class, ['only' => ['store']]);
-
+Route::middleware('auth')->group(function(){
+    Route::resource('books.reviews', ReviewController::class, ['only' => ['create']]);
+    Route::resource('books.users.reviews', ReviewController::class, ['only' => ['store', 'edit', 'update', 'destroy']]);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

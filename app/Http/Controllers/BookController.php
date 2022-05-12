@@ -7,14 +7,15 @@ use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use App\Models\Genre;
 use App\Models\Publisher;
+use App\Models\Review;
 use My_func;
 
 class BookController extends Controller
 {
     public function index(){
-        $books = Book::latest()->limit(20);
+        $reviews = Review::latest()->limit(20)->get();
 
-        return view('books.index', compact('books'));
+        return view('books.index', compact('reviews'));
     }
 
     public function create(){

@@ -17,12 +17,12 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen">
+        <div class="">
             {{-- @include('layouts.navigation') --}}
 
             <!-- Page Heading -->
            <header>
-                    @include('layouts.partial.header')
+                @include('layouts.partial.header')
             </header>
 
             <!-- Page Content -->
