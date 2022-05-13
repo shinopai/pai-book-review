@@ -36,7 +36,7 @@ class BookController extends Controller
     }
 
     public function search(Request $request){
-        $books = Book::where('title', 'LIKE', '%'.$request->input('q_word').'%')->get();
+        $books = Book::where('title', 'LIKE', '%'.$request->input('q_word').'%')->paginate(20);
         $books->load('genre', 'publisher', 'reviews');
 
         return view('books.search', compact('books'));
@@ -47,11 +47,7 @@ class BookController extends Controller
 
         $avg = My_func::getAvg($book->reviews->sum('score'), $book->reviews->count());
 
-        $medianArr = array();
-        foreach($book->reviews as $review){
-          array_push($medianArr, $review->score);
-        }
-        $median = My_func::getMedian(collect($medianArr));
+        $median = My_func::getMedian($book->reviews->pluck('score'));
 
         return view('books.show', compact('book', 'avg', 'median'));
     }

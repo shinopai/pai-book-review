@@ -2,6 +2,8 @@
 
 namespace App\Lib;
 
+use Illuminate\Support\Facades\Storage;
+
 class My_func{
   public static function getAvg($scoreSum, $count){
     if($count == 0){
@@ -19,6 +21,12 @@ class My_func{
     }else{
       $res = $score->median();
     }
+
+    return $res;
+  }
+
+  public static function isExistsImage($image){
+    $res = Storage::disk('local')->exists('public/images/' . $image);
 
     return $res;
   }

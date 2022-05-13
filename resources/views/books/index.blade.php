@@ -29,8 +29,12 @@
       <textarea class="w-full p-2 mt-2 resize-none" rows="6" readonly="readonly">{{ $review->content }}</textarea>
             <p>
               <span class="mr-2 text-blue-600">
+                @if(My_func::isExistsImage($review->user->user_image))
                 <img src="{{ asset('storage/images/'.$review->user->user_image) }}" alt="{{ $review->user->name }}" srcset="" class="inline-block rounded-full" width="40" height="40">
-                {{ $review->user->name }}
+                @else
+                <img src="{{ asset('images/user_profile.jpg') }}" alt="{{ $review->user->name }}" srcset="" class="inline-block rounded-full" width="40" height="40">
+                @endif
+                <a href="{{ route('users.profile', ['user' => $review->user->id]) }}">{{ $review->user->name }}</a>
               </span>
               <span>このレビューの評価&nbsp;<i class="fa-solid fa-star"></i>2.5</span>
             </p>
@@ -64,7 +68,11 @@
             <p>{{ $review->title }}</p>
             <p class="text-right">
               <span class="mr-2">
+                @if(My_func::isExistsImage($review->user->user_image))
                 <img src="{{ asset('storage/images/'.$review->user->user_image) }}" alt="{{ $review->user->name }}" srcset="" class="inline-block rounded-full" width="40" height="40">
+                @else
+                <img src="{{ asset('images/user_profile.jpg') }}" alt="{{ $review->user->name }}" srcset="" class="inline-block rounded-full" width="40" height="40">
+                @endif
                 {{ $review->user->name }}
               </span>
               <span>このレビューの評価&nbsp;<i class="fa-solid fa-star"></i>2.5</span>

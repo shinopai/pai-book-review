@@ -10,7 +10,7 @@
       @if($books->count() == 0)
       ブックは見つかりませんでした
       @else
-      {{ $books->count() }}件ヒットしました
+      {{ $books->total() }}件ヒットしました
       @endif
     </h1>
     <ul class="mt-5">
@@ -21,7 +21,7 @@
           <div class="w-1/3 bg-my-blue rounded-lg flex justify-center items-center border">
             <div class="text-center">
               <span class="block">平均値</span>
-              <span class="font-bold text-2xl block">0</span>
+              <span class="font-bold text-2xl block">{{ My_func::getAvg($book->reviews->sum('score'), $book->reviews->count()) }}</span>
             </div>
           </div>
           <div class="w-1/3 bg-my-blue rounded-lg flex justify-center items-center border">
@@ -33,7 +33,7 @@
           <div class="w-1/3 bg-my-blue rounded-lg flex justify-center items-center border">
             <div class="text-center">
               <span class="block">中央値</span>
-              <span class="font-bold text-2xl block">0</span>
+              <span class="font-bold text-2xl block">{{ My_func::getMedian($book->reviews->pluck('score')) }}</span>
             </div>
           </div>
         </div>
@@ -52,6 +52,7 @@
       </li>
       @endforeach
     </ul>
+    {{ $books->appends(request()->input())->links() }}
   </div>
 
   <!-- footer -->
