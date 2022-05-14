@@ -1,12 +1,12 @@
 <x-app-layout>
 <section class="flex justify-center items-center w-[80%] mx-auto mt-10">
     <div class="w-[80%] mx-auto bg-my-light-blue rounded pb-10 space-y-4 border border-gray-100">
-               <form method="POST" action="{{ route('register') }}" novalidate enctype="multipart/form-data">
+        <form method="POST" action="{{ route('register') }}" novalidate enctype="multipart/form-data">
             @csrf
         <div class="mb-4">
             <h2 class="text-xl font-bold text-white bg-my-blue p-2">新規登録</h2>
         </div>
-                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
         <div class="w-[80%] mx-auto mt-10">
         <div class="mb-2">
