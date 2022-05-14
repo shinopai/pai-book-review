@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
-use App\Http\Controllers\Auth\App;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +41,7 @@ class RegisteredUserController extends Controller
         ]);
 
         if($request->hasFile('image')){
-            if (App::environment('local')) {
+            if (env('APP_ENV') === 'local') {
                 $image = $request->file('image')->getClientOriginalName();
                 $request->file('image')->storeAs('public/images', $image);
             }else{
