@@ -47,7 +47,7 @@ class RegisteredUserController extends Controller
                 $request->file('image')->storeAs('public/images', $image);
             }else{
                 $disk = Storage::disk('s3');
-                $image = $disk->put('', $request->file('image'));
+                $image = $disk->put('', $request->file('image'), 'public');
             }
         }
 
