@@ -11,8 +11,8 @@
     class="bg-my-light-blue w-[80%] mx-auto p-5 rounded-lg border border-black mt-10"
   >
     <div class="flex justify-start">
-      @if(env('APP_ENV') === 'local')
       <div class="w-[20%]">
+        @if(env('APP_ENV') === 'local')
         @if(My_func::isExistsImage($user->user_image))
         <img
           src="{{ asset('storage/images/'.$user->user_image) }}"
@@ -34,8 +34,8 @@
           srcset=""
           class="w-full h-auto object-cover"
         />
+        @endif
       </div>
-      @endif
       <div class="flex-grow pl-5">
         <h1 class="bg-my-gray text-lg px-2 p-1 w-fit mb-2">
           {{ $user->name }}
