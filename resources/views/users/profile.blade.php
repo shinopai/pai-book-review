@@ -28,7 +28,12 @@
           class="w-full h-auto object-cover"
         />
         @endif @else
-        <img src="{{ $user->user_image }}" alt="{{ $user->name }}" srcset="" />
+        <img
+          src="{{ $user->user_image }}"
+          alt="{{ $user->name }}"
+          srcset=""
+          class="w-full h-auto object-cover"
+        />
         @endif
       </div>
       <div class="flex-grow pl-5">
