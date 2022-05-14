@@ -40,8 +40,15 @@ class RegisteredUserController extends Controller
             'image' => ['image']
         ]);
 
-        $image = $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images', $image);
+        if($request->hasFile('image')){
+            if (App::environment('local')) {
+                $image = $request->file('image')->getClientOriginalName();
+                $request->file('image')->storeAs('public/images', $image);
+            }else{
+                $disk = Storage::disk('s3');
+                $image = $disk->put('', $request->file('image'));
+            }
+        }
 
         $user = User::create([
             'name' => $request->name,
