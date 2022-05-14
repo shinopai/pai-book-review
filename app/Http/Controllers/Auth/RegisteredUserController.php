@@ -48,6 +48,7 @@ class RegisteredUserController extends Controller
             }else{
                 $disk = Storage::disk('s3');
                 $image = $disk->put('', $request->file('image'));
+                dd($image);
             }
         }
 
