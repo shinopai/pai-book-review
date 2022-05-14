@@ -34,8 +34,8 @@
           srcset=""
           class="w-full h-auto object-cover"
         />
-        @endif
       </div>
+      @endif
       <div class="flex-grow pl-5">
         <h1 class="bg-my-gray text-lg px-2 p-1 w-fit mb-2">
           {{ $user->name }}
