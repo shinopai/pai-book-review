@@ -12,7 +12,8 @@
   >
     <div class="flex justify-start">
       <div class="w-[20%]">
-        @if(My_func::isExistsImage($user->user_image))
+        @if(My_func::isExistsImage($user->user_image)) @if(env('APP_ENV') ===
+        'local')
         <img
           src="{{ asset('storage/images/'.$user->user_image) }}"
           alt="{{ $user->name }}"
@@ -20,6 +21,8 @@
           class="w-full h-auto object-cover"
         />
         @else
+        <img src="{{ $user->user_image }}" alt="{{ $User->name }}" srcset="" />
+        @endif @else
         <img
           src="{{ asset('images/user_profile.jpg') }}"
           alt="{{ $user->name }}"
